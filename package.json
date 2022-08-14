@@ -1,8 +1,8 @@
 {
-  "name": "packageName",
-  "version": "0.0.0",
+  "name": "@nozomuikuta/h3-cors",
+  "version": "0.1.0",
   "description": "",
-  "repository": "unjs/packageName",
+  "repository": "NozomuIkuta/h3-cors",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -26,11 +26,17 @@
     "release": "pnpm test && standard-version && git push --follow-tags && pnpm publish",
     "test": "pnpm lint && vitest run"
   },
-  "dependencies": {},
+  "peerDependencies": {
+    "defu": "latest",
+    "h3": "latest"
+  },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "latest",
+    "@types/node": "latest",
     "c8": "latest",
+    "defu": "latest",
     "eslint": "latest",
+    "h3": "latest",
     "standard-version": "latest",
     "typescript": "latest",
     "unbuild": "latest",
