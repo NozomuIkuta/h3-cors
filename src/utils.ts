@@ -131,6 +131,7 @@ export function createMaxAgeHeader (options: CorsOptions): AccessControlMaxAgeHe
   return {}
 }
 
+/* c8 ignore start */
 export function appendCorsPreflightHeaders (event: CompatibilityEvent, options: CorsOptions) {
   appendHeaders(event, createOriginHeaders(event, options))
   appendHeaders(event, createCredentialsHeaders(options))
@@ -138,9 +139,12 @@ export function appendCorsPreflightHeaders (event: CompatibilityEvent, options: 
   appendHeaders(event, createMethodsHeaders(options))
   appendHeaders(event, createAllowHeaderHeaders(event, options))
 }
+/* c8 ignore end */
 
+/* c8 ignore start */
 export function appendCorsActualRequestHeaders (event: CompatibilityEvent, options: CorsOptions) {
   appendHeaders(event, createOriginHeaders(event, options))
   appendHeaders(event, createCredentialsHeaders(options))
   appendHeaders(event, createExposeHeaders(options))
 }
+/* c8 ignore end */
