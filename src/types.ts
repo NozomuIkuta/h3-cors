@@ -1,4 +1,4 @@
-import { appendHeaders, HTTPMethod } from 'h3'
+import { HTTPMethod } from 'h3'
 
 export interface CorsOptions {
   origin?: '*' | 'null' | (string | RegExp)[] | ((origin: string) => boolean)
