@@ -8,8 +8,7 @@ export interface CorsOptions {
   credentials?: boolean
   maxAge?: string | false
   preflight?: {
-    passThrough?: boolean
-    statusCode?: 204
+    statusCode?: number
   }
 }
 

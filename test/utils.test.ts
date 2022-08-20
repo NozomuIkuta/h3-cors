@@ -13,7 +13,7 @@ describe('resolveCorsOptions', () => {
       exposeHeaders: ['EXPOSED-HEADER'],
       maxAge: '12345',
       preflight: {
-        passThrough: true
+        statusCode: 404
       }
     })
 
@@ -25,7 +25,6 @@ describe('resolveCorsOptions', () => {
       credentials: false,
       maxAge: false,
       preflight: {
-        passThrough: false,
         statusCode: 204
       }
     })
@@ -37,8 +36,7 @@ describe('resolveCorsOptions', () => {
       credentials: false,
       maxAge: '12345',
       preflight: {
-        passThrough: true,
-        statusCode: 204
+        statusCode: 404
       }
     })
   })
