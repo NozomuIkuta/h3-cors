@@ -1,9 +1,9 @@
 # @nozomuikuta/h3-cors
 
-[![npm version][https://img.shields.io/npm/v/@nozomuikuta/h3-cors?style=flat-square]][https://npmjs.com/package/@nozomuikuta/h3-cors]
-[![npm downloads][https://img.shields.io/npm/dm/@nozomuikuta/h3-cors?style=flat-square]][https://npmjs.com/package/@nozomuikuta/h3-cors]
-[![Github Actions][https://img.shields.io/github/workflow/status/nozomuikuta/h3-cors/ci/main?style=flat-square]][https://github.com/nozomuikuta/h3-cors/actions?query=workflow%3Aci]
-[![Codecov][https://img.shields.io/codecov/c/gh/nozomuikuta/h3-cors/main?style=flat-square]][https://codecov.io/gh/nozomuikuta/h3-cors]
+[![npm version](https://img.shields.io/npm/v/@nozomuikuta/h3-cors?style=flat-square)](https://npmjs.com/package/@nozomuikuta/h3-cors)
+[![npm downloads](https://img.shields.io/npm/dm/@nozomuikuta/h3-cors?style=flat-square)](https://npmjs.com/package/@nozomuikuta/h3-cors)
+[![Github Actions](https://img.shields.io/github/workflow/status/nozomuikuta/h3-cors/ci/main?style=flat-square)](https://github.com/nozomuikuta/h3-cors/actions?query=workflow%3Aci)
+[![Codecov](https://img.shields.io/codecov/c/gh/nozomuikuta/h3-cors/main?style=flat-square)](https://codecov.io/gh/nozomuikuta/h3-cors)
 
 > h3-native CORS event handler
 
