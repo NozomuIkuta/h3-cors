@@ -7,6 +7,10 @@ export function resolveCorsOptions (options: CorsOptions = {}): CorsOptions {
   const defaultOptions: CorsOptions = {
     origin: '*',
     methods: '*',
+    allowHeaders: '*',
+    exposeHeaders: '*',
+    credentials: false,
+    maxAge: false,
     preflight: {
       passThrough: false,
       statusCode: 204
@@ -68,8 +72,8 @@ export function createOriginHeaders (event: CompatibilityEvent, options: CorsOpt
 export function createMethodsHeaders (options: CorsOptions): AccessControlAllowMethodsHeader {
   const { methods } = options
 
-  if (methods === '*') {
-    return { 'Access-Control-Allow-Methods': methods }
+  if (!methods || methods === '*' || !methods.length) {
+    return { 'Access-Control-Allow-Methods': '*' }
   }
 
   return { 'Access-Control-Allow-Methods': methods.join(',') }

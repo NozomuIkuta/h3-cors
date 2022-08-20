@@ -5,8 +5,8 @@ export interface CorsOptions {
   methods?: '*' | HTTPMethod[]
   allowHeaders?: '*' | string[]
   exposeHeaders?: '*' | string[]
-  credentials?: true
-  maxAge?: string
+  credentials?: boolean
+  maxAge?: string | false
   preflight?: {
     passThrough?: boolean
     statusCode?: 204
