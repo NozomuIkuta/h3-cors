@@ -56,7 +56,7 @@ createServer(app).listen(process.env.PORT || 3000)
     - If `false` is returned, an error is thrown
 - `methods` is `"*"` or an array of HTTP methods to configures **Access-Control-Allow-Methods** CORS header (default: `"*"`)
 - `allowHeaders` is `"*"` or an array of HTTP headers to configure **Access-Control-Allow-Headers** CORS header (default: `"*"`)
-- `exposedHeaders` is `"*"` or an array of HTTP headers to configure **Access-Control-Expose-Headers** CORS header (default: `"*"`)
+- `exposeHeaders` is `"*"` or an array of HTTP headers to configure **Access-Control-Expose-Headers** CORS header (default: `"*"`)
 - `credentials` is boolean to configure **Access-Control-Allow-Credentials** CORS header (default: `false`)
 - `maxAge` is a string to configure **Access-Control-Max-Age**, or `false` to unset the header (default: `false`)
 - `preflight.statusCode` is used to set `event.res.statusCode` for preflight request (default: `204`)
