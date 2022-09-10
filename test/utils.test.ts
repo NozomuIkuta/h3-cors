@@ -183,6 +183,18 @@ describe('createOriginHeaders', () => {
     expect(createOriginHeaders(eventMock, options2)).toEqual({ 'Access-Control-Allow-Origin': '*' })
   })
 
+  it('returns an object whose `Access-Control-Allow-Origin` is `"*"` if `origin` header is not defined', () => {
+    const eventMock = {
+      req: {
+        method: 'OPTIONS',
+        headers: {}
+      }
+    } as CompatibilityEvent
+    const options: CorsOptions = {}
+
+    expect(createOriginHeaders(eventMock, options)).toEqual({ 'Access-Control-Allow-Origin': '*' })
+  })
+
   it('returns an object with `Access-Control-Allow-Origin` and `Vary` keys if `origin` option is `"null"`', () => {
     const eventMock = {
       req: {
