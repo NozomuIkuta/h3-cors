@@ -49,8 +49,9 @@ export function isAllowedOrigin (origin: ReturnType<typeof getRequestHeaders>['o
 
 export function createOriginHeaders (event: CompatibilityEvent, options: CorsOptions): AccessControlAllowOriginHeader {
   const { origin } = options
+  const requestOriginHeader = getRequestHeader(event, 'Origin') as string | undefined
 
-  if (!origin || origin === '*') {
+  if (!requestOriginHeader || !origin || origin === '*') {
     return { 'Access-Control-Allow-Origin': '*' }
   }
 
@@ -58,8 +59,7 @@ export function createOriginHeaders (event: CompatibilityEvent, options: CorsOpt
     return { 'Access-Control-Allow-Origin': origin, Vary: 'Origin' }
   }
 
-  const requestOriginHeader = getRequestHeader(event, 'Origin') as string | undefined
-  const headers = !requestOriginHeader ? '*' : Array.isArray(requestOriginHeader) ? requestOriginHeader.join(',') : requestOriginHeader
+  const headers = Array.isArray(requestOriginHeader) ? requestOriginHeader.join(',') : requestOriginHeader
 
   return { 'Access-Control-Allow-Origin': headers, Vary: 'Origin' }
 }
