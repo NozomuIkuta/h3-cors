@@ -49,6 +49,7 @@ export function isAllowedOrigin (origin: ReturnType<typeof getRequestHeaders>['o
 
 export function createOriginHeaders (event: CompatibilityEvent, options: CorsOptions): AccessControlAllowOriginHeader {
   const { origin } = options
+  // Type assertion is needed due to upstream issue: https://github.com/unjs/h3/issues/176
   const requestOriginHeader = getRequestHeader(event, 'Origin') as string | undefined
 
   if (!requestOriginHeader || !origin || origin === '*') {
