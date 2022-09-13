@@ -1,10 +1,10 @@
 import { appendHeaders, getMethod, getRequestHeaders, getRequestHeader } from 'h3'
 import { defu } from 'defu'
 import type { CompatibilityEvent } from 'h3'
-import type { CorsOptions, AccessControlAllowOriginHeader, AccessControlAllowMethodsHeader, AccessControlAllowCredentialsHeader, AccessControlAllowHeadersHeader, AccessControlExposeHeadersHeader, AccessControlMaxAgeHeader } from './types'
+import type { CorsOptions, ResolvedCorsOptions, AccessControlAllowOriginHeader, AccessControlAllowMethodsHeader, AccessControlAllowCredentialsHeader, AccessControlAllowHeadersHeader, AccessControlExposeHeadersHeader, AccessControlMaxAgeHeader } from './types'
 
-export function resolveCorsOptions (options: CorsOptions = {}): CorsOptions {
-  const defaultOptions: CorsOptions = {
+export function resolveCorsOptions (options: CorsOptions = {}): ResolvedCorsOptions {
+  const defaultOptions: ResolvedCorsOptions = {
     origin: '*',
     methods: '*',
     allowHeaders: '*',

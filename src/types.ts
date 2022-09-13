@@ -12,6 +12,15 @@ export interface CorsOptions {
   }
 }
 
+// Ref: https://github.com/ts-essentials/ts-essentials/blob/c63e30e6112ed93df0bcf05028cfe1d67617f93d/lib/types.ts#L133-L153
+type DeepRequired<T> = T extends (string | number | boolean | Function | RegExp)
+  ? T
+  : T extends {}
+  ? { [K in keyof T]-?: DeepRequired<T[K]> }
+  : Required<T>;
+
+export type ResolvedCorsOptions = DeepRequired<CorsOptions>
+
 export type AccessControlAllowOriginHeader = Partial<{
   'Access-Control-Allow-Origin': '*' | 'null' | string
   Vary: 'Origin'
