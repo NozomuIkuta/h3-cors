@@ -24,25 +24,23 @@
     "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
     "prepack": "unbuild",
     "release": "pnpm test && standard-version && git push --follow-tags && pnpm publish",
-    "test": "pnpm lint && vitest run --coverage",
-    "preview-coverage": "pnpm test && serve coverage"
+    "test": "pnpm lint && vitest run --coverage"
   },
   "peerDependencies": {
-    "defu": "latest",
-    "h3": "latest"
+    "defu": "^6.1.0",
+    "h3": "^0.7.21"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "latest",
-    "@types/node": "latest",
-    "@vitest/coverage-c8": "latest",
-    "defu": "latest",
-    "eslint": "latest",
-    "h3": "latest",
-    "serve": "latest",
-    "standard-version": "latest",
-    "typescript": "latest",
-    "unbuild": "latest",
-    "vitest": "latest"
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
+    "@types/node": "^18.7.17",
+    "@vitest/coverage-c8": "^0.23.2",
+    "defu": "^6.1.0",
+    "eslint": "^8.23.1",
+    "h3": "^0.7.21",
+    "standard-version": "^9.5.0",
+    "typescript": "^4.8.3",
+    "unbuild": "^0.8.10",
+    "vitest": "^0.23.2"
   },
-  "packageManager": "pnpm@7.9.3"
+  "packageManager": "pnpm@7.11.0"
 }
