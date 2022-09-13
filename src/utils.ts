@@ -30,7 +30,7 @@ export function isPreflight (event: CompatibilityEvent): boolean {
 export function isAllowedOrigin (origin: ReturnType<typeof getRequestHeaders>['origin'], options: CorsOptions): boolean {
   const { origin: originOption } = options
 
-  if (!originOption || originOption === '*' || originOption === 'null') {
+  if (!origin || !originOption || originOption === '*' || originOption === 'null') {
     return true
   }
 

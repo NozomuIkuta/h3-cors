@@ -99,6 +99,13 @@ describe('isPreflight', () => {
 })
 
 describe('isAllowedOrigin', () => {
+  it('returns `true` if `origin` header is not defined', () => {
+    const origin = undefined
+    const options: CorsOptions = {}
+
+    expect(isAllowedOrigin(origin, options)).toEqual(true)
+  })
+
   it('returns `true` if `origin` option is not defined', () => {
     const origin = 'https://example.com'
     const options: CorsOptions = {}
