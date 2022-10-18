@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/NozomuIkuta/h3-cors/compare/v0.1.5...v0.1.6) (2022-10-18)
+
+
+### Bug Fixes
+
+* types ([4207eb5](https://github.com/NozomuIkuta/h3-cors/commit/4207eb591bc766820129836269afc46e62687928))
+
 ### [0.1.5](https://github.com/NozomuIkuta/h3-cors/compare/v0.1.4...v0.1.5) (2022-09-13)
 
 
