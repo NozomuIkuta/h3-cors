@@ -1,6 +1,6 @@
 import { appendHeaders, getMethod, getRequestHeaders, getRequestHeader } from 'h3'
 import { defu } from 'defu'
-import type { CompatibilityEvent } from 'h3'
+import type { H3Event } from 'h3'
 import type { CorsOptions, ResolvedCorsOptions, AccessControlAllowOriginHeader, AccessControlAllowMethodsHeader, AccessControlAllowCredentialsHeader, AccessControlAllowHeadersHeader, AccessControlExposeHeadersHeader, AccessControlMaxAgeHeader } from './types'
 
 export function resolveCorsOptions (options: CorsOptions = {}): ResolvedCorsOptions {
@@ -19,7 +19,7 @@ export function resolveCorsOptions (options: CorsOptions = {}): ResolvedCorsOpti
   return defu(options, defaultOptions)
 }
 
-export function isPreflight (event: CompatibilityEvent): boolean {
+export function isPreflight (event: H3Event): boolean {
   const method = getMethod(event)
   const origin = getRequestHeader(event, 'origin')
   const accessControlRequestMethod = getRequestHeader(event, 'access-control-request-method')
@@ -47,7 +47,7 @@ export function isAllowedOrigin (origin: ReturnType<typeof getRequestHeaders>['o
   return originOption(origin)
 }
 
-export function createOriginHeaders (event: CompatibilityEvent, options: CorsOptions): AccessControlAllowOriginHeader {
+export function createOriginHeaders (event: H3Event, options: CorsOptions): AccessControlAllowOriginHeader {
   const { origin: originOption } = options
   const origin = getRequestHeader(event, 'Origin')
 
@@ -84,7 +84,7 @@ export function createCredentialsHeaders (options: CorsOptions): AccessControlAl
   return {}
 }
 
-export function createAllowHeaderHeaders (event: CompatibilityEvent, options: CorsOptions): AccessControlAllowHeadersHeader {
+export function createAllowHeaderHeaders (event: H3Event, options: CorsOptions): AccessControlAllowHeadersHeader {
   const { allowHeaders } = options
 
   if (!allowHeaders || allowHeaders === '*' || !allowHeaders.length) {
@@ -127,7 +127,7 @@ export function createMaxAgeHeader (options: CorsOptions): AccessControlMaxAgeHe
 }
 
 /* c8 ignore start */
-export function appendCorsPreflightHeaders (event: CompatibilityEvent, options: CorsOptions) {
+export function appendCorsPreflightHeaders (event: H3Event, options: CorsOptions) {
   appendHeaders(event, createOriginHeaders(event, options))
   appendHeaders(event, createCredentialsHeaders(options))
   appendHeaders(event, createExposeHeaders(options))
@@ -137,7 +137,7 @@ export function appendCorsPreflightHeaders (event: CompatibilityEvent, options: 
 /* c8 ignore end */
 
 /* c8 ignore start */
-export function appendCorsActualRequestHeaders (event: CompatibilityEvent, options: CorsOptions) {
+export function appendCorsActualRequestHeaders (event: H3Event, options: CorsOptions) {
   appendHeaders(event, createOriginHeaders(event, options))
   appendHeaders(event, createCredentialsHeaders(options))
   appendHeaders(event, createExposeHeaders(options))
