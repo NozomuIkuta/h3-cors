@@ -16,7 +16,7 @@ Install package:
 npm install @nozomuikuta/h3-cors
 
 # yarn
-yarn install @nozomuikuta/h3-cors
+yarn add @nozomuikuta/h3-cors
 
 # pnpm
 pnpm install @nozomuikuta/h3-cors
