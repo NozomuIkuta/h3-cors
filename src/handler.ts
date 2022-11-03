@@ -1,18 +1,11 @@
-import { defineEventHandler, getRequestHeader } from 'h3'
-import { resolveCorsOptions, isAllowedOrigin, appendCorsPreflightHeaders, appendCorsActualRequestHeaders, isPreflight } from './utils'
+import { defineEventHandler } from 'h3'
+import { resolveCorsOptions, appendCorsPreflightHeaders, appendCorsActualRequestHeaders, isPreflight } from './utils'
 import type { CorsOptions } from './types'
 
 export function defineCorsEventHandler (options: CorsOptions): ReturnType<typeof defineEventHandler> {
   const { preflight: { statusCode } } = resolveCorsOptions(options)
 
   return defineEventHandler((event) => {
-    const requestOriginHeader = getRequestHeader(event, 'Origin') as string
-    const isAllowed = isAllowedOrigin(requestOriginHeader, options)
-
-    if (!isAllowed) {
-      throw new Error(`[h3-cors] ${requestOriginHeader} is not allowed origin`)
-    }
-
     if (isPreflight(event)) {
       appendCorsPreflightHeaders(event, options)
 
