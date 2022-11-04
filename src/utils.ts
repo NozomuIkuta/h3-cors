@@ -59,9 +59,18 @@ export function createOriginHeaders (event: H3Event, options: CorsOptions): Acce
     return { 'Access-Control-Allow-Origin': originOption, Vary: 'Origin' }
   }
 
-  const headers = Array.isArray(origin) ? origin.join(',') : origin
+  // Origin header is supposed to be always a string regardless of type definition
+  const originHeader = origin as string
 
-  return { 'Access-Control-Allow-Origin': headers, Vary: 'Origin' }
+  if (Array.isArray(originOption)) {
+    return isAllowedOrigin(originHeader, options)
+      ? { 'Access-Control-Allow-Origin': originHeader, Vary: 'Origin' }
+      : {}
+  }
+
+  return originOption(originHeader)
+    ? { 'Access-Control-Allow-Origin': originHeader, Vary: 'Origin' }
+    : {}
 }
 
 export function createMethodsHeaders (options: CorsOptions): AccessControlAllowMethodsHeader {
