@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/NozomuIkuta/h3-cors/compare/v0.1.6...v0.1.7) (2022-11-04)
+
+
+### Bug Fixes
+
+* handle origin option correctly ([#5](https://github.com/NozomuIkuta/h3-cors/issues/5)) ([3443638](https://github.com/NozomuIkuta/h3-cors/commit/344363870fae1b562875fc456294fd42cdc025b1))
+* handle request correctly ([#5](https://github.com/NozomuIkuta/h3-cors/issues/5)) ([4cd8fd7](https://github.com/NozomuIkuta/h3-cors/commit/4cd8fd7c9b0e4201027eff6926c509a33151faae))
+
 ### [0.1.6](https://github.com/NozomuIkuta/h3-cors/compare/v0.1.5...v0.1.6) (2022-10-18)
 
 
