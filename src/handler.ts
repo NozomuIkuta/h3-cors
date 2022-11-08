@@ -2,7 +2,7 @@ import { defineEventHandler } from 'h3'
 import { resolveCorsOptions, appendCorsPreflightHeaders, appendCorsActualRequestHeaders, isPreflight } from './utils'
 import type { CorsOptions } from './types'
 
-export function defineCorsEventHandler (options: CorsOptions): ReturnType<typeof defineEventHandler> {
+export function defineCorsEventHandler (options: CorsOptions) {
   const { preflight: { statusCode } } = resolveCorsOptions(options)
 
   return defineEventHandler((event) => {
