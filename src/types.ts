@@ -21,32 +21,33 @@ type DeepRequired<T> = T extends (string | number | boolean | Function | RegExp)
 
 export type ResolvedCorsOptions = DeepRequired<CorsOptions>
 
-export type AccessControlAllowOriginHeader = Partial<{
+export type EmptyHeader = {}
+
+export type AccessControlAllowOriginHeader = {
   'Access-Control-Allow-Origin': '*' | 'null' | string
   Vary: 'Origin'
-}>
+} | EmptyHeader
 
-export type AccessControlAllowMethodsHeader = Partial<{
+export type AccessControlAllowMethodsHeader = {
   'Access-Control-Allow-Methods': '*' | string
-  Vary: 'Access-Control-Request-Method'
-}>
+} | EmptyHeader
 
-export type AccessControlAllowCredentialsHeader = Partial<{
+export type AccessControlAllowCredentialsHeader = {
   'Access-Control-Allow-Credentials': 'true'
-}>
+} | EmptyHeader
 
-export type AccessControlAllowHeadersHeader = Partial<{
+export type AccessControlAllowHeadersHeader = {
   'Access-Control-Allow-Headers': '*' | string
   Vary: 'Access-Control-Request-Headers'
-}>
+} | EmptyHeader
 
-export type AccessControlExposeHeadersHeader = Partial<{
+export type AccessControlExposeHeadersHeader = {
   'Access-Control-Expose-Headers': '*' | string
-}>
+} | EmptyHeader
 
-export type AccessControlMaxAgeHeader = Partial<{
+export type AccessControlMaxAgeHeader = {
   'Access-Control-Max-Age': string
-}>
+} | EmptyHeader
 
 export type CorsHeaders =
   | AccessControlAllowOriginHeader
