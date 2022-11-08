@@ -76,11 +76,17 @@ export function createOriginHeaders (event: H3Event, options: CorsOptions): Acce
 export function createMethodsHeaders (options: CorsOptions): AccessControlAllowMethodsHeader {
   const { methods } = options
 
-  if (!methods || methods === '*' || !methods.length) {
+  if (!methods) {
+    return {}
+  }
+
+  if (methods === '*') {
     return { 'Access-Control-Allow-Methods': '*' }
   }
 
-  return { 'Access-Control-Allow-Methods': methods.join(',') }
+  return methods.length
+    ? { 'Access-Control-Allow-Methods': methods.join(',') }
+    : {}
 }
 
 export function createCredentialsHeaders (options: CorsOptions): AccessControlAllowCredentialsHeader {

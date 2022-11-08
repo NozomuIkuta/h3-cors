@@ -240,18 +240,22 @@ describe('createOriginHeaders', () => {
 })
 
 describe('createMethodsHeaders', () => {
-  it('returns an object whose `Access-Control-Allow-Methods` is `"*"` if `methods` option is not defined, `"*"`, or an empty array', () => {
+  it('returns an empty object if `methods` option is not defined or an empty array', () => {
     const options1: CorsOptions = {}
     const options2: CorsOptions = {
-      methods: '*'
-    }
-    const options3: CorsOptions = {
       methods: []
     }
 
+    expect(createMethodsHeaders(options1)).toEqual({})
+    expect(createMethodsHeaders(options2)).toEqual({})
+  })
+
+  it('returns an object whose `Access-Control-Allow-Methods` is `"*"` if `methods` option is `"*"`', () => {
+    const options1: CorsOptions = {
+      methods: '*'
+    }
+
     expect(createMethodsHeaders(options1)).toEqual({ 'Access-Control-Allow-Methods': '*' })
-    expect(createMethodsHeaders(options2)).toEqual({ 'Access-Control-Allow-Methods': '*' })
-    expect(createMethodsHeaders(options3)).toEqual({ 'Access-Control-Allow-Methods': '*' })
   })
 
   it('returns an object whose `Access-Control-Allow-Methods` is set as `methods` option', () => {
