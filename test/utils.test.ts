@@ -1,5 +1,5 @@
 import { expect, it, describe } from 'vitest'
-import type { CompatibilityEvent } from 'h3'
+import type { H3Event } from 'h3'
 import { resolveCorsOptions, isPreflight, isAllowedOrigin, createOriginHeaders, createMethodsHeaders, createCredentialsHeaders, createAllowHeaderHeaders, createExposeHeaders, createMaxAgeHeader } from '../src/utils'
 import type { CorsOptions } from '../src/types'
 
@@ -52,7 +52,7 @@ describe('isPreflight', () => {
           'access-control-request-method': 'GET'
         }
       }
-    } as CompatibilityEvent
+    } as H3Event
 
     expect(isPreflight(eventMock)).toEqual(true)
   })
@@ -66,7 +66,7 @@ describe('isPreflight', () => {
           'access-control-request-method': 'GET'
         }
       }
-    } as CompatibilityEvent
+    } as H3Event
 
     expect(isPreflight(eventMock)).toEqual(false)
   })
@@ -79,7 +79,7 @@ describe('isPreflight', () => {
           'access-control-request-method': 'GET'
         }
       }
-    } as CompatibilityEvent
+    } as H3Event
 
     expect(isPreflight(eventMock)).toEqual(false)
   })
@@ -92,7 +92,7 @@ describe('isPreflight', () => {
           origin: 'http://example.com'
         }
       }
-    } as CompatibilityEvent
+    } as H3Event
 
     expect(isPreflight(eventMock)).toEqual(false)
   })
@@ -180,7 +180,7 @@ describe('createOriginHeaders', () => {
           origin: 'http://example.com'
         }
       }
-    } as CompatibilityEvent
+    } as H3Event
     const options1: CorsOptions = {}
     const options2: CorsOptions = {
       origin: '*'
@@ -196,7 +196,7 @@ describe('createOriginHeaders', () => {
         method: 'OPTIONS',
         headers: {}
       }
-    } as CompatibilityEvent
+    } as H3Event
     const options: CorsOptions = {}
 
     expect(createOriginHeaders(eventMock, options)).toEqual({ 'Access-Control-Allow-Origin': '*' })
@@ -210,7 +210,7 @@ describe('createOriginHeaders', () => {
           origin: 'http://example.com'
         }
       }
-    } as CompatibilityEvent
+    } as H3Event
     const options: CorsOptions = {
       origin: 'null'
     }
@@ -226,7 +226,7 @@ describe('createOriginHeaders', () => {
           origin: 'http://example.com'
         }
       }
-    } as CompatibilityEvent
+    } as H3Event
     const options1: CorsOptions = {
       origin: ['http://example.com']
     }
@@ -288,7 +288,7 @@ describe('createAllowHeaderHeaders', () => {
           'access-control-request-headers': 'CUSTOM-HEADER'
         }
       }
-    } as CompatibilityEvent
+    } as H3Event
     const options1: CorsOptions = {}
     const options2: CorsOptions = {
       allowHeaders: '*'
@@ -308,7 +308,7 @@ describe('createAllowHeaderHeaders', () => {
         method: 'OPTIONS',
         headers: {}
       }
-    } as CompatibilityEvent
+    } as H3Event
     const options: CorsOptions = {
       allowHeaders: ['CUSTOM-HEADER']
     }
