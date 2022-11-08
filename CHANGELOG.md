@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/NozomuIkuta/h3-cors/compare/v0.1.7...v0.1.8) (2022-11-08)
+
+
+### Features
+
+* add alias for defineCorsEventHandler ([ce7278e](https://github.com/NozomuIkuta/h3-cors/commit/ce7278ec42820585dd1c32380471bd46a957b741))
+
+
+### Bug Fixes
+
+* handle methods option correctly ([b6a2ec4](https://github.com/NozomuIkuta/h3-cors/commit/b6a2ec49f24ff63bae9fcd31c3e18022d0701161))
+* types ([1f68ff1](https://github.com/NozomuIkuta/h3-cors/commit/1f68ff1a5126af7cbe065fbd9c3efe098efcf9d8))
+
 ### [0.1.7](https://github.com/NozomuIkuta/h3-cors/compare/v0.1.6...v0.1.7) (2022-11-04)
 
 
