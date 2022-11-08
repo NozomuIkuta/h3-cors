@@ -17,3 +17,5 @@ export function defineCorsEventHandler (options: CorsOptions) {
     }
   })
 }
+
+export const corsEventHandler = defineCorsEventHandler
