@@ -8,10 +8,7 @@ export function defineCorsEventHandler (options: CorsOptions) {
   return defineEventHandler((event) => {
     if (isPreflight(event)) {
       appendCorsPreflightHeaders(event, options)
-
-      event.node.res.statusCode = statusCode
-      event.node.res.setHeader('Content-Length', '0')
-      event.node.res.end()
+      sendNoContent(event, statusCode)
     } else {
       appendCorsActualRequestHeaders(event, options)
     }
