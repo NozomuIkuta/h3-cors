@@ -1,160 +1,209 @@
-import { appendHeaders, getMethod, getRequestHeaders, getRequestHeader } from 'h3'
-import { defu } from 'defu'
-import type { H3Event } from 'h3'
-import type { CorsOptions, ResolvedCorsOptions, AccessControlAllowOriginHeader, AccessControlAllowMethodsHeader, AccessControlAllowCredentialsHeader, AccessControlAllowHeadersHeader, AccessControlExposeHeadersHeader, AccessControlMaxAgeHeader } from './types'
+import {
+  appendHeaders,
+  getMethod,
+  getRequestHeaders,
+  getRequestHeader,
+} from "h3";
+import { defu } from "defu";
+import type { H3Event } from "h3";
+import type {
+  CorsOptions,
+  ResolvedCorsOptions,
+  AccessControlAllowOriginHeader,
+  AccessControlAllowMethodsHeader,
+  AccessControlAllowCredentialsHeader,
+  AccessControlAllowHeadersHeader,
+  AccessControlExposeHeadersHeader,
+  AccessControlMaxAgeHeader,
+} from "./types";
 
-export function resolveCorsOptions (options: CorsOptions = {}): ResolvedCorsOptions {
+export function resolveCorsOptions(
+  options: CorsOptions = {}
+): ResolvedCorsOptions {
   const defaultOptions: ResolvedCorsOptions = {
-    origin: '*',
-    methods: '*',
-    allowHeaders: '*',
-    exposeHeaders: '*',
+    origin: "*",
+    methods: "*",
+    allowHeaders: "*",
+    exposeHeaders: "*",
     credentials: false,
     maxAge: false,
     preflight: {
-      statusCode: 204
-    }
-  }
+      statusCode: 204,
+    },
+  };
 
-  return defu(options, defaultOptions)
+  return defu(options, defaultOptions);
 }
 
-export function isPreflight (event: H3Event): boolean {
-  const method = getMethod(event)
-  const origin = getRequestHeader(event, 'origin')
-  const accessControlRequestMethod = getRequestHeader(event, 'access-control-request-method')
+export function isPreflight(event: H3Event): boolean {
+  const method = getMethod(event);
+  const origin = getRequestHeader(event, "origin");
+  const accessControlRequestMethod = getRequestHeader(
+    event,
+    "access-control-request-method"
+  );
 
-  return method === 'OPTIONS' && !!origin && !!accessControlRequestMethod
+  return method === "OPTIONS" && !!origin && !!accessControlRequestMethod;
 }
 
-export function isAllowedOrigin (origin: ReturnType<typeof getRequestHeaders>['origin'], options: CorsOptions): boolean {
-  const { origin: originOption } = options
+export function isAllowedOrigin(
+  origin: ReturnType<typeof getRequestHeaders>["origin"],
+  options: CorsOptions
+): boolean {
+  const { origin: originOption } = options;
 
-  if (!origin || !originOption || originOption === '*' || originOption === 'null') {
-    return true
+  if (
+    !origin ||
+    !originOption ||
+    originOption === "*" ||
+    originOption === "null"
+  ) {
+    return true;
   }
 
   if (Array.isArray(originOption)) {
-    return !!originOption.find((_origin) => {
+    return originOption.some((_origin) => {
       if (_origin instanceof RegExp) {
-        return _origin.test(origin)
+        return _origin.test(origin);
       }
 
-      return origin === _origin
-    })
+      return origin === _origin;
+    });
   }
 
-  return originOption(origin)
+  return originOption(origin);
 }
 
-export function createOriginHeaders (event: H3Event, options: CorsOptions): AccessControlAllowOriginHeader {
-  const { origin: originOption } = options
-  const origin = getRequestHeader(event, 'Origin')
+export function createOriginHeaders(
+  event: H3Event,
+  options: CorsOptions
+): AccessControlAllowOriginHeader {
+  const { origin: originOption } = options;
+  const origin = getRequestHeader(event, "Origin");
 
-  if (!origin || !originOption || originOption === '*') {
-    return { 'Access-Control-Allow-Origin': '*' }
+  if (!origin || !originOption || originOption === "*") {
+    return { "Access-Control-Allow-Origin": "*" };
   }
 
-  if (typeof originOption === 'string') {
-    return { 'Access-Control-Allow-Origin': originOption, Vary: 'Origin' }
+  if (typeof originOption === "string") {
+    return { "Access-Control-Allow-Origin": originOption, Vary: "Origin" };
   }
 
   // Origin header is supposed to be always a string regardless of type definition
-  const originHeader = origin as string
+  const originHeader = origin as string;
 
   if (Array.isArray(originOption)) {
     return isAllowedOrigin(originHeader, options)
-      ? { 'Access-Control-Allow-Origin': originHeader, Vary: 'Origin' }
-      : {}
+      ? { "Access-Control-Allow-Origin": originHeader, Vary: "Origin" }
+      : {};
   }
 
   return originOption(originHeader)
-    ? { 'Access-Control-Allow-Origin': originHeader, Vary: 'Origin' }
-    : {}
+    ? { "Access-Control-Allow-Origin": originHeader, Vary: "Origin" }
+    : {};
 }
 
-export function createMethodsHeaders (options: CorsOptions): AccessControlAllowMethodsHeader {
-  const { methods } = options
+export function createMethodsHeaders(
+  options: CorsOptions
+): AccessControlAllowMethodsHeader {
+  const { methods } = options;
 
   if (!methods) {
-    return {}
+    return {};
   }
 
-  if (methods === '*') {
-    return { 'Access-Control-Allow-Methods': '*' }
+  if (methods === "*") {
+    return { "Access-Control-Allow-Methods": "*" };
   }
 
-  return methods.length
-    ? { 'Access-Control-Allow-Methods': methods.join(',') }
-    : {}
+  return methods.length > 0
+    ? { "Access-Control-Allow-Methods": methods.join(",") }
+    : {};
 }
 
-export function createCredentialsHeaders (options: CorsOptions): AccessControlAllowCredentialsHeader {
-  const { credentials } = options
+export function createCredentialsHeaders(
+  options: CorsOptions
+): AccessControlAllowCredentialsHeader {
+  const { credentials } = options;
 
   if (credentials) {
-    return { 'Access-Control-Allow-Credentials': 'true' }
+    return { "Access-Control-Allow-Credentials": "true" };
   }
 
-  return {}
+  return {};
 }
 
-export function createAllowHeaderHeaders (event: H3Event, options: CorsOptions): AccessControlAllowHeadersHeader {
-  const { allowHeaders } = options
+export function createAllowHeaderHeaders(
+  event: H3Event,
+  options: CorsOptions
+): AccessControlAllowHeadersHeader {
+  const { allowHeaders } = options;
 
-  if (!allowHeaders || allowHeaders === '*' || !allowHeaders.length) {
-    const headers = getRequestHeader(event, 'access-control-request-headers')
+  if (!allowHeaders || allowHeaders === "*" || allowHeaders.length === 0) {
+    const headers = getRequestHeader(event, "access-control-request-headers");
 
     return {
-      'Access-Control-Allow-Headers': Array.isArray(headers) ? headers.join(',') : headers,
-      Vary: 'Access-Control-Request-Headers'
-    }
+      "Access-Control-Allow-Headers": Array.isArray(headers)
+        ? headers.join(",")
+        : headers,
+      Vary: "Access-Control-Request-Headers",
+    };
   }
 
   return {
-    'Access-Control-Allow-Headers': allowHeaders.join(','),
-    Vary: 'Access-Control-Request-Headers'
-  }
+    "Access-Control-Allow-Headers": allowHeaders.join(","),
+    Vary: "Access-Control-Request-Headers",
+  };
 }
 
-export function createExposeHeaders (options: CorsOptions): AccessControlExposeHeadersHeader {
-  const { exposeHeaders } = options
+export function createExposeHeaders(
+  options: CorsOptions
+): AccessControlExposeHeadersHeader {
+  const { exposeHeaders } = options;
 
   if (!exposeHeaders) {
-    return {}
+    return {};
   }
 
-  if (exposeHeaders === '*') {
-    return { 'Access-Control-Expose-Headers': exposeHeaders }
+  if (exposeHeaders === "*") {
+    return { "Access-Control-Expose-Headers": exposeHeaders };
   }
 
-  return { 'Access-Control-Expose-Headers': exposeHeaders.join(',') }
+  return { "Access-Control-Expose-Headers": exposeHeaders.join(",") };
 }
 
-export function createMaxAgeHeader (options: CorsOptions): AccessControlMaxAgeHeader {
-  const { maxAge } = options
+export function createMaxAgeHeader(
+  options: CorsOptions
+): AccessControlMaxAgeHeader {
+  const { maxAge } = options;
 
   if (maxAge) {
-    return { 'Access-Control-Max-Age': maxAge }
+    return { "Access-Control-Max-Age": maxAge };
   }
 
-  return {}
+  return {};
 }
 
 /* c8 ignore start */
-export function appendCorsPreflightHeaders (event: H3Event, options: CorsOptions) {
-  appendHeaders(event, createOriginHeaders(event, options))
-  appendHeaders(event, createCredentialsHeaders(options))
-  appendHeaders(event, createExposeHeaders(options))
-  appendHeaders(event, createMethodsHeaders(options))
-  appendHeaders(event, createAllowHeaderHeaders(event, options))
+export function appendCorsPreflightHeaders(
+  event: H3Event,
+  options: CorsOptions
+) {
+  appendHeaders(event, createOriginHeaders(event, options));
+  appendHeaders(event, createCredentialsHeaders(options));
+  appendHeaders(event, createExposeHeaders(options));
+  appendHeaders(event, createMethodsHeaders(options));
+  appendHeaders(event, createAllowHeaderHeaders(event, options));
 }
 /* c8 ignore end */
 
 /* c8 ignore start */
-export function appendCorsActualRequestHeaders (event: H3Event, options: CorsOptions) {
-  appendHeaders(event, createOriginHeaders(event, options))
-  appendHeaders(event, createCredentialsHeaders(options))
-  appendHeaders(event, createExposeHeaders(options))
+export function appendCorsActualRequestHeaders(
+  event: H3Event,
+  options: CorsOptions
+) {
+  appendHeaders(event, createOriginHeaders(event, options));
+  appendHeaders(event, createCredentialsHeaders(options));
+  appendHeaders(event, createExposeHeaders(options));
 }
 /* c8 ignore end */
