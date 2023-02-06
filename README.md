@@ -1,9 +1,9 @@
 # @nozomuikuta/h3-cors
 
-[![npm version](https://img.shields.io/npm/v/@nozomuikuta/h3-cors?style=flat-square)](https://npmjs.com/package/@nozomuikuta/h3-cors)
-[![npm downloads](https://img.shields.io/npm/dm/@nozomuikuta/h3-cors?style=flat-square)](https://npmjs.com/package/@nozomuikuta/h3-cors)
-[![Github Actions](https://img.shields.io/github/workflow/status/nozomuikuta/h3-cors/ci/main?style=flat-square)](https://github.com/nozomuikuta/h3-cors/actions?query=workflow%3Aci)
-[![Codecov](https://img.shields.io/codecov/c/gh/nozomuikuta/h3-cors/main?style=flat-square)](https://codecov.io/gh/nozomuikuta/h3-cors)
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![Github Actions][github-actions-src]][github-actions-href]
+[![Codecov][codecov-src]][codecov-href]
 
 > h3-native CORS event handler
 
@@ -84,10 +84,12 @@ You can import utility functions as well as event handler.
 - `appendCorsPreflightHeaders(event, options)`
 - `appendCorsActualRequestHeaders(event, options)`
 
-## 💻 Development
+
+## Development
 
 - Clone this repository
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` (use `npm i -g corepack` for Node.js < 16.10)
+- Install latest LTS version of [Node.js](https://nodejs.org/en/)
+- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
 - Install dependencies using `pnpm install`
 - Run interactive tests using `pnpm dev`
 
@@ -96,3 +98,15 @@ You can import utility functions as well as event handler.
 Made with 💛
 
 Published under [MIT License](./LICENSE).
+
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/@nozomuikuta/h3-cors?style=flat-square
+[npm-version-href]: https://npmjs.com/package/@nozomuikuta/h3-cors
+[npm-downloads-src]: https://img.shields.io/npm/dm/@nozomuikuta/h3-cors?style=flat-square
+[npm-downloads-href]: https://npmjs.com/package/@nozomuikuta/h3-cors
+[github-actions-src]: https://img.shields.io/github/workflow/status/nozomuikuta/h3-cors/ci/main?style=flat-square
+[github-actions-href]: https://github.com/nozomuikuta/h3-cors/actions?query=workflow%3Aci
+[codecov-src]: https://img.shields.io/codecov/c/gh/nozomuikuta/h3-cors/main?style=flat-squarestyle=flat-square
+[codecov-href]: https://codecov.io/gh/nozomuikuta/h3-cors
