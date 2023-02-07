@@ -140,14 +140,14 @@ export function createAllowHeaderHeaders(
   const { allowHeaders } = options;
 
   if (!allowHeaders || allowHeaders === "*" || allowHeaders.length === 0) {
-    const headers = getRequestHeader(event, "access-control-request-headers");
+    const header = getRequestHeader(event, "access-control-request-headers");
 
-    return {
-      "Access-Control-Allow-Headers": Array.isArray(headers)
-        ? headers.join(",")
-        : headers,
-      Vary: "Access-Control-Request-Headers",
-    };
+    return header
+      ? {
+          "Access-Control-Allow-Headers": header,
+          Vary: "Access-Control-Request-Headers",
+        }
+      : {};
   }
 
   return {

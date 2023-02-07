@@ -1,4 +1,5 @@
 import { HTTPMethod } from "h3";
+import type { Object, Any } from "ts-toolbelt";
 
 export interface CorsOptions {
   origin?: "*" | "null" | (string | RegExp)[] | ((origin: string) => boolean);
@@ -12,25 +13,16 @@ export interface CorsOptions {
   };
 }
 
-// Ref: https://github.com/ts-essentials/ts-essentials/blob/c63e30e6112ed93df0bcf05028cfe1d67617f93d/lib/types.ts#L133-L153
-type DeepRequired<T> = T extends
-  | string
-  | number
-  | boolean
-  | ((...args: any[]) => any)
-  | RegExp
-  ? T
-  : T extends Record<string, never>
-  ? { [K in keyof T]-?: DeepRequired<T[K]> }
-  : Required<T>;
-
-export type ResolvedCorsOptions = DeepRequired<CorsOptions>;
+export type ResolvedCorsOptions = Object.Required<CorsOptions, Any.Key, "deep">;
 
 export type EmptyHeader = Record<string, never>;
 
 export type AccessControlAllowOriginHeader =
   | {
-      "Access-Control-Allow-Origin": "*" | "null" | string;
+      "Access-Control-Allow-Origin": "*";
+    }
+  | {
+      "Access-Control-Allow-Origin": "null" | string;
       Vary: "Origin";
     }
   | EmptyHeader;
