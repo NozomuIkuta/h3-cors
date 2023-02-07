@@ -32,7 +32,7 @@
     "h3": "^1.2.1"
   },
   "devDependencies": {
-    "@types/node": "^18.11.0",
+    "@types/node": "^18.11.19",
     "@vitest/coverage-c8": "^0.28.4",
     "changelogen": "^0.4.1",
     "defu": "^6.1.2",
