@@ -7,7 +7,7 @@ specifiers:
   defu: ^6.1.2
   eslint: ^8.33.0
   eslint-config-unjs: ^0.1.0
-  h3: ^1.1.0
+  h3: ^1.2.1
   prettier: ^2.8.3
   standard-version: ^9.5.0
   typescript: ^4.9.5
@@ -21,7 +21,7 @@ devDependencies:
   defu: 6.1.2
   eslint: 8.33.0
   eslint-config-unjs: 0.1.0_4vsywjlpuriuw3tl5oq6zy5a64
-  h3: 1.1.0
+  h3: 1.2.1
   prettier: 2.8.3
   standard-version: 9.5.0
   typescript: 4.9.5
@@ -2709,13 +2709,14 @@ packages:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
 
-  /h3/1.1.0:
-    resolution: {integrity: sha512-kx3u+RMzY963fU8NNT2ePWgsryAn9DNztPqbHia/M7HgA+rtXKjHjED9/uidcYPmImNwAfJsCachCzh2T3QH2A==}
+  /h3/1.2.1:
+    resolution: {integrity: sha512-uYRENV7pNd4kl4nGFDkVOZRZgDVmH4Ur4h64QAsqPsHj1jxI6MAU+7xT0JX9Tg3iKbmgMPpRf8QI6e4CJZ12MQ==}
     dependencies:
       cookie-es: 0.5.0
       destr: 1.2.2
       radix3: 1.0.0
       ufo: 1.0.1
+      uncrypto: 0.1.2
     dev: true
 
   /handlebars/4.7.7:
@@ -4427,6 +4428,10 @@ packages:
     transitivePeerDependencies:
       - sass
       - supports-color
+    dev: true
+
+  /uncrypto/0.1.2:
+    resolution: {integrity: sha512-kuZwRKV615lEw/Xx3Iz56FKk3nOeOVGaVmw0eg+x4Mne28lCotNFbBhDW7dEBCBKyKbRQiCadEZeNAFPVC5cgw==}
     dev: true
 
   /universalify/2.0.0:
