@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@types/node': ^18.11.0
+  '@types/node': ^18.11.19
   '@vitest/coverage-c8': ^0.28.4
   changelogen: ^0.4.1
   defu: ^6.1.2
