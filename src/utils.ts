@@ -89,17 +89,14 @@ export function createOriginHeaders(
     return { "Access-Control-Allow-Origin": originOption, Vary: "Origin" };
   }
 
-  // Origin header is supposed to be always a string regardless of type definition
-  const originHeader = origin as string;
-
   if (Array.isArray(originOption)) {
-    return isAllowedOrigin(originHeader, options)
-      ? { "Access-Control-Allow-Origin": originHeader, Vary: "Origin" }
+    return isAllowedOrigin(origin, options)
+      ? { "Access-Control-Allow-Origin": origin, Vary: "Origin" }
       : {};
   }
 
-  return originOption(originHeader)
-    ? { "Access-Control-Allow-Origin": originHeader, Vary: "Origin" }
+  return originOption(origin)
+    ? { "Access-Control-Allow-Origin": origin, Vary: "Origin" }
     : {};
 }
 
