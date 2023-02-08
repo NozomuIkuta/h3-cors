@@ -1,5 +1,4 @@
 import { HTTPMethod } from "h3";
-import type { Object, Any } from "ts-toolbelt";
 
 export interface CorsOptions {
   origin?: "*" | "null" | (string | RegExp)[] | ((origin: string) => boolean);
@@ -13,7 +12,18 @@ export interface CorsOptions {
   };
 }
 
-export type ResolvedCorsOptions = Object.Required<CorsOptions, Any.Key, "deep">;
+// TODO: Define `ResolvedCorsOptions` as "deep required nonnullable" type of `CorsOptions`
+export interface ResolvedCorsOptions {
+  origin: "*" | "null" | (string | RegExp)[] | ((origin: string) => boolean);
+  methods: "*" | HTTPMethod[];
+  allowHeaders: "*" | string[];
+  exposeHeaders: "*" | string[];
+  credentials: boolean;
+  maxAge: string | false;
+  preflight: {
+    statusCode: number;
+  };
+}
 
 export type EmptyHeader = Record<string, never>;
 

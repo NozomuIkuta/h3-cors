@@ -10,7 +10,6 @@ specifiers:
   h3: ^1.2.1
   prettier: ^2.8.3
   standard-version: ^9.5.0
-  ts-toolbelt: ^9.6.0
   typescript: ^4.9.5
   unbuild: ^1.1.1
   vitest: ^0.28.4
@@ -25,7 +24,6 @@ devDependencies:
   h3: 1.2.1
   prettier: 2.8.3
   standard-version: 9.5.0
-  ts-toolbelt: 9.6.0
   typescript: 4.9.5
   unbuild: 1.1.1
   vitest: 0.28.4
@@ -4297,10 +4295,6 @@ packages:
   /trim-newlines/3.0.1:
     resolution: {integrity: sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==}
     engines: {node: '>=8'}
-    dev: true
-
-  /ts-toolbelt/9.6.0:
-    resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
     dev: true
 
   /tsconfig-paths/3.14.1:
