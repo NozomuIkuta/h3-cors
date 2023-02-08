@@ -89,13 +89,7 @@ export function createOriginHeaders(
     return { "Access-Control-Allow-Origin": originOption, Vary: "Origin" };
   }
 
-  if (Array.isArray(originOption)) {
-    return isAllowedOrigin(origin, options)
-      ? { "Access-Control-Allow-Origin": origin, Vary: "Origin" }
-      : {};
-  }
-
-  return originOption(origin)
+  return isAllowedOrigin(origin, options)
     ? { "Access-Control-Allow-Origin": origin, Vary: "Origin" }
     : {};
 }
