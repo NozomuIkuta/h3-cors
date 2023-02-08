@@ -190,7 +190,7 @@ describe("isAllowedOrigin", () => {
 });
 
 describe("createOriginHeaders", () => {
-  it('returns an object whose `Access-Control-Allow-Origin` is `"*"` if `origin` option is not defined, `"*"`', () => {
+  it('returns an object whose `Access-Control-Allow-Origin` is `"*"` if `origin` option is not defined, or `"*"`', () => {
     const eventMock = {
       node: {
         req: {
