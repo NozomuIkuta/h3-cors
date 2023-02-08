@@ -175,6 +175,7 @@ export function createMaxAgeHeader(
   return {};
 }
 
+// TODO: Implemente e2e tests to improve code coverage
 /* c8 ignore start */
 export function appendCorsPreflightHeaders(
   event: H3Event,
@@ -188,6 +189,7 @@ export function appendCorsPreflightHeaders(
 }
 /* c8 ignore end */
 
+// TODO: Implemente e2e tests to improve code coverage
 /* c8 ignore start */
 export function appendCorsActualRequestHeaders(
   event: H3Event,
