@@ -1,6 +1,6 @@
 {
   "name": "@nozomuikuta/h3-cors",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "h3-native CORS event handler",
   "repository": "NozomuIkuta/h3-cors",
   "license": "MIT",

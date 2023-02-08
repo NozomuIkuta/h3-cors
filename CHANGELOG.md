@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v0.2.1
+
+
+### 🩹 Fixes
+
+  - Fix types (3907543)
+
+### 🏡 Chore
+
+  - Modify renovate config (377d16a)
+  - Apply the latest unjs template (7625f22)
+  - Upgrade h3 (bfbce0e)
+  - Add workaround for `ResolvedCorsOptions` type (3b35f2d)
+  - Remove unnecessary type assertion (a8632aa)
+  - Remove redundant code (89f5cee)
+  - Improve code coverage (2d54be7)
+  - Modify test message (b4f8178)
+  - Add todo comments (71e3dc6)
+
+### ❤️  Contributors
+
+- Nozomu Ikuta
+
 ## [0.2.0](https://github.com/NozomuIkuta/h3-cors/compare/v0.1.8...v0.2.0) (2022-11-20)
 
 
