@@ -278,6 +278,28 @@ describe("createOriginHeaders", () => {
       Vary: "Origin",
     });
   });
+
+  it("returns an empty object if `origin` option is one that is not allowed", () => {
+    const eventMock = {
+      node: {
+        req: {
+          method: "OPTIONS",
+          headers: {
+            origin: "http://example.com",
+          },
+        },
+      },
+    } as H3Event;
+    const options1: CorsOptions = {
+      origin: ["http://example2.com"],
+    };
+    const options2: CorsOptions = {
+      origin: () => false,
+    };
+
+    expect(createOriginHeaders(eventMock, options1)).toEqual({});
+    expect(createOriginHeaders(eventMock, options2)).toEqual({});
+  });
 });
 
 describe("createMethodsHeaders", () => {
@@ -364,7 +386,7 @@ describe("createAllowHeaderHeaders", () => {
     });
   });
 
-  it("returns an object with `Access-Control-Allow-Headers` and `Vary` keys according to `allowHeaders` option", () => {
+  it("returns an object with `Access-Control-Allow-Headers` and `Vary` keys according to `allowHeaders` option if `Access-Control-Request-Headers` header is not defined", () => {
     const eventMock = {
       node: {
         req: {
@@ -381,6 +403,28 @@ describe("createAllowHeaderHeaders", () => {
       "Access-Control-Allow-Headers": "CUSTOM-HEADER",
       Vary: "Access-Control-Request-Headers",
     });
+  });
+
+  it('returns an empty object if `allowHeaders` option is not defined, `"*"`, or an empty array, and `Access-Control-Request-Headers` is not defined', () => {
+    const eventMock = {
+      node: {
+        req: {
+          method: "OPTIONS",
+          headers: {},
+        },
+      },
+    } as H3Event;
+    const options1: CorsOptions = {};
+    const options2: CorsOptions = {
+      allowHeaders: "*",
+    };
+    const options3: CorsOptions = {
+      allowHeaders: [],
+    };
+
+    expect(createAllowHeaderHeaders(eventMock, options1)).toEqual({});
+    expect(createAllowHeaderHeaders(eventMock, options2)).toEqual({});
+    expect(createAllowHeaderHeaders(eventMock, options3)).toEqual({});
   });
 });
 
