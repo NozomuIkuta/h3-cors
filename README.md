@@ -118,7 +118,7 @@ Published under [MIT License](./LICENSE).
 [npm-version-href]: https://npmjs.com/package/@nozomuikuta/h3-cors
 [npm-downloads-src]: https://img.shields.io/npm/dm/@nozomuikuta/h3-cors?style=flat-square
 [npm-downloads-href]: https://npmjs.com/package/@nozomuikuta/h3-cors
-[github-actions-src]: https://img.shields.io/github/workflow/status/nozomuikuta/h3-cors/ci/main?style=flat-square
+[github-actions-src]: https://img.shields.io/github/actions/workflow/status/nozomuikuta/h3-cors/ci.yml?branch=main&style=flat-square
 [github-actions-href]: https://github.com/nozomuikuta/h3-cors/actions?query=workflow%3Aci
 [codecov-src]: https://img.shields.io/codecov/c/gh/nozomuikuta/h3-cors/main?style=flat-squarestyle=flat-square
 [codecov-href]: https://codecov.io/gh/nozomuikuta/h3-cors
