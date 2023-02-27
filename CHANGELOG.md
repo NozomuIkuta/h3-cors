@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v0.2.2
+
+
+### 📖 Documentation
+
+  - Fix build status badge url (528548b)
+  - Add announcement (#15)
+
+### 🏡 Chore
+
+  - Disable Renovate (1206528)
+
+### ❤️  Contributors
+
+- Nozomu Ikuta
+
 ## v0.2.1
 
 
