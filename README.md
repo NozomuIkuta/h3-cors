@@ -7,6 +7,18 @@
 
 > h3-native CORS event handler
 
+---
+
+# 🔔 Announcement 🔔
+
+This package has been integrated to `h3` v1.5.0, so you can import all features of this package from `h3` directly. 🎉
+
+This repository and the npm package has been archived.
+
+Thank you for all kinds of contribution to this package!
+
+---
+
 ## Usage
 
 Install package:
