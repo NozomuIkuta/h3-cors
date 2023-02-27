@@ -11,9 +11,9 @@
 
 # 🔔 Announcement 🔔
 
-`@nozomuikuta/h3-cors` v0.2.1 has been integrated into `h3` v1.x.x, so now you can import all the fetures out of the box. 🎉
+This package has been integrated to `h3` v1.5.0, so you can import all features of this package from `h3` directly. 🎉
 
-This repository and its npm package has been archived and deprecated.
+This repository and the npm package has been archived.
 
 Thank you for all kinds of contribution to this package!
 
